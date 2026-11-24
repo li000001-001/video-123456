@@ -1,0 +1,10 @@
+fastapi>=0.110
+uvicorn>=0.27
+httpx>=0.27
+PyYAML>=6.0
+jieba>=0.42
+edge-tts>=6.1
+yt-dlp>=2024.1.1
+imageio-ffmpeg>=0.5
+python-multipart>=0.0.9
+zhconv>=1.4

@@ -1,0 +1,15 @@
+.git
+.github
+.gitignore
+.idea
+.vscode
+.screenshots
+android
+data
+__pycache__
+*.py[cod]
+.venv
+venv
+.env
+cookies.txt
+*.log

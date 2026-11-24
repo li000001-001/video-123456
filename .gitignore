@@ -1,0 +1,16 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+.git/
+.idea/
+.vscode/
+.screenshots/
+data/
+cookies.txt
+*.log
+android/.gradle/
+android/local.properties
+android/build/
+android/app/build/

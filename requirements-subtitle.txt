@@ -1,0 +1,4 @@
+# 可选：本地离线字幕。只在这台机器上跑字幕时才需要安装。
+# 单核 4G 机器建议使用 base 或 tiny 模型，并在 config.yaml 降低 max_seconds。
+# 云端部署时单独在云端安装即可。
+faster-whisper>=1.0.0

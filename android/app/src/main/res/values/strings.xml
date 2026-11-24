@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">视频分类助手</string>
+    <string name="accessibility_label">视频分类助手 · 自动识别</string>
+    <string name="accessibility_desc">开启后，在抖音、快手、头条、B站浏览视频时，自动读取标题并把分类结果提示给你。不会上传任何图片或录音，只读取屏幕上的文字。</string>
+</resources>

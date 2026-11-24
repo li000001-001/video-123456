@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b0e17">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>视频分类助手</title>
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="icon" href="/icons/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <div class="logo">V</div>
+    <div class="brand-text">
+      <h1>视频分类助手</h1>
+      <p class="sub" id="hint">分类 · 去水印 · 字幕 · 配音</p>
+    </div>
+  </div>
+  <button id="refreshBtn" class="ghost icon" title="刷新">刷新</button>
+</header>
+
+<main>
+  <!-- 新建 -->
+  <section id="view-new" class="view">
+    <div class="card">
+      <div class="label">分享链接</div>
+      <textarea id="inputUrl" rows="3" placeholder="在抖音 / 头条 / 快手 / B站 / TikTok / X 点「分享 → 复制链接」，把整段文字粘进来"></textarea>
+      <div class="row between mt10">
+        <button id="pasteBtn" class="ghost small">读取剪贴板</button>
+        <span id="platformTag" class="tag muted">等待输入</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="label">处理能力</div>
+      <div class="switches">
+        <label class="switch"><input type="checkbox" id="optDownload" checked><span>去水印下载原片</span></label>
+        <label class="switch"><input type="checkbox" id="optSubtitle" checked><span>识别字幕</span></label>
+        <label class="switch"><input type="checkbox" id="optBurn" checked><span>烧录硬字幕</span></label>
+        <label class="switch"><input type="checkbox" id="optDubbing"><span>自动配音</span></label>
+      </div>
+
+      <div id="dubbingBox" class="suboptions hidden">
+        <div class="label mt12">配音音色</div>
+        <select id="voiceSel"></select>
+        <div class="label mt12">配音文本（留空则使用识别出的字幕）</div>
+        <textarea id="dubbingText" rows="2" placeholder="不填就自动用字幕内容朗读"></textarea>
+        <div class="label mt12">配音方式</div>
+        <select id="dubbingMode">
+          <option value="replace">替换原声</option>
+          <option value="mix">与原声混合</option>
+        </select>
+      </div>
+    </div>
+
+    <button id="submitBtn" class="primary block">开始处理</button>
+
+    <div class="card mt12">
+      <div class="label">上传本地视频</div>
+      <input type="file" id="fileInput" accept="video/*" class="file">
+      <p class="tiny muted mt6">已经存在手机里的视频，也可以直接加字幕和配音。</p>
+    </div>
+  </section>
+
+  <!-- 任务 -->
+  <section id="view-tasks" class="view hidden">
+    <div id="taskList" class="task-list"></div>
+    <div id="emptyState" class="empty">
+      <p>还没有任务</p>
+      <p class="tiny muted">回到「新建」粘贴一条视频链接试试</p>
+    </div>
+  </section>
+
+  <!-- 设置 -->
+  <section id="view-settings" class="view hidden">
+    <div class="card">
+      <div class="label">运行状态</div>
+      <div id="healthBox" class="kv"></div>
+    </div>
+    <div class="card">
+      <div class="label">支持平台</div>
+      <div id="platformBox" class="chips"></div>
+    </div>
+    <div class="card">
+      <div class="label">分类体系</div>
+      <div id="categoryBox" class="chips"></div>
+    </div>
+    <div class="card">
+      <div class="label">关于</div>
+      <p class="tiny muted">所有识别在你自己的服务上完成，不外传。字幕能力若显示「未安装」，请在电脑执行 pip install faster-whisper，或在 config.yaml 配置云端字幕端点。</p>
+    </div>
+  </section>
+</main>
+
+<nav class="tabbar">
+  <button data-view="new" class="active">新建</button>
+  <button data-view="tasks">任务<span id="badge" class="badge hidden">0</span></button>
+  <button data-view="settings">设置</button>
+</nav>
+
+<div id="toast" class="toast"></div>
+<script src="/app.js"></script>
+</body>
+</html>
